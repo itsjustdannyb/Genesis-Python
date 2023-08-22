@@ -1,21 +1,17 @@
 from tkinter import *
+from PIL import ImageTk, Image
+window = Tk()
+window.title("The Comment Section")
+window.iconbitmap("C:/Users/user/Downloads/Bams/quote.ico")
 
-root = Tk()
+button_quit =Button(window, text="Exit Program", command=window.quit)
+button_quit.pack()
 
-def click_btn():
-    hello = "Hello " + e.get()
-    clk_label = Label(root, text=hello)
-    clk_label.pack()
-
-
-e = Entry(root, width=50, bg="gray", fg="white")
-e.pack()
-
-#default text in input box
-e.insert(0, "Enter your Name: ")
-
-clk_btn = Button(root, text="Save Name", command=click_btn, padx=45, pady=22.5)
-clk_btn.pack()
+#Images
+my_img = ImageTk.PhotoImage(Image.open("baby panda.jpg"))
+my_label = Label(image=my_img)
+my_label.pack()
 
 
-root.mainloop()
+window.mainloop()
+
