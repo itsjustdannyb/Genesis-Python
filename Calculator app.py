@@ -18,6 +18,31 @@ def button_click(number):
 def clear_button():
     entry_box.delete(0, 'end')
 
+#additon function
+
+
+# f_num = int(first_number)  # fixes global variable error in Pycharm
+def add_button():
+    first_number = entry_box.get()
+    global f_num
+    f_num = int(first_number)
+    entry_box.delete(0, 'end')
+    return
+
+# equals function
+# s_num = int(second_number) #fixes global variable error in pyCharm
+def equals_button():
+    second_number = entry_box.get()
+    global s_num
+    s_num = int(second_number)
+    entry_box.delete(0, 'end')
+
+    result = f_num + s_num
+    entry_box.insert(0, result)
+    #print(result)
+    return result
+
+
 #Define Buttons
 
 
@@ -31,8 +56,8 @@ button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: button_click
 button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8))
 button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
-button_add = Button(root, text="+", padx=39, pady=20, command=lambda: button_click())
-button_equal = Button(root, text="=", padx=93, pady=20, command=lambda: button_click())
+button_add = Button(root, text="+", padx=39, pady=20, command=add_button)
+button_equal = Button(root, text="=", padx=93, pady=20, command=lambda: equals_button())
 button_clear = Button(root, text="Clear", padx=84, pady=20, command=clear_button)
 
 #Display Buttons on the Screen
