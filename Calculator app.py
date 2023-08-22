@@ -25,9 +25,43 @@ def clear_button():
 def add_button():
     first_number = entry_box.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     entry_box.delete(0, 'end')
     return
+
+#subtract function
+
+def subtract_button():
+    first_number = entry_box.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    entry_box.delete(0, 'end')
+    return
+
+#division function
+def division_button():
+    first_number = entry_box.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    entry_box.delete(0, 'end')
+    return
+
+#multiply button
+def multiply_button():
+    first_number = entry_box.get()
+    global f_num
+    global math
+    math = "multiplaication"
+    f_num = int(first_number)
+    entry_box.delete(0, 'end')
+    return
+
 
 # equals function
 # s_num = int(second_number) #fixes global variable error in pyCharm
@@ -37,10 +71,18 @@ def equals_button():
     s_num = int(second_number)
     entry_box.delete(0, 'end')
 
-    result = f_num + s_num
-    entry_box.insert(0, result)
-    #print(result)
-    return result
+    if math == "addition":
+        result = f_num + s_num
+        entry_box.insert(0, result)
+    elif math == "subtraction":
+        result = f_num - s_num
+        entry_box.insert(0, result)
+    elif math == "division":
+        result = f_num / s_num
+        entry_box.insert(0, result)
+    else:
+        result = f_num * s_num
+        entry_box.insert(0, result)
 
 
 #Define Buttons
@@ -60,6 +102,11 @@ button_add = Button(root, text="+", padx=39, pady=20, command=add_button)
 button_equal = Button(root, text="=", padx=93, pady=20, command=lambda: equals_button())
 button_clear = Button(root, text="Clear", padx=84, pady=20, command=clear_button)
 
+button_multiply = Button(root, text="*", padx=39, pady=40, command=multiply_button)
+button_divide = Button(root, text="/", padx=39, pady=40, command=division_button)
+button_subtract = Button(root, text="-", padx=39, pady=40, command=subtract_button)
+
+
 #Display Buttons on the Screen
 
 button_1.grid(row=3, column=0)
@@ -78,5 +125,9 @@ button_0.grid(row=4, column=0)
 button_clear.grid(row=4, column=1, columnspan=2)
 button_add.grid(row=5, column=0)
 button_equal.grid(row=5, column=1, columnspan=2)
+
+button_subtract.grid(row=6, column=0)
+button_multiply.grid(row=6, column=1)
+button_divide.grid(row=6, column=2)
 #prevents app from closing prematurely
 root.mainloop()
