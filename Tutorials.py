@@ -1,37 +1,35 @@
 import tkinter as tk
 from tkinter import ttk
 
-# window
 root = tk.Tk()
-root.title("Getting and setting widgets")
+root.title('tkinter variables')
 
-# functions
 def button_func():
-    entry_text = entry.get()
-    # Update the Label
-    #label.configure(text="some other text")
-    label['text'] = entry_text
-    entry.configure(state='disabled')
-
-def button_func_2():
-    # label.configure(text="I am Groot")
-    label['text'] = 'I am Groot'
-    # entry.configure(state='enabled')
-    entry['state'] = 'enabled'
-    entry.delete(0, 'end')
+    print(string_var.get())
+    string_var.set('button pressed')
 
 
-# widgets
-label = ttk.Label(master=root, text="I am Groot")
+#Tkinter Variables
+string_var = tk.StringVar()
+string_var_exercise = tk.StringVar(value='test')
+
+
+label = ttk.Label(master=root, text="Default", textvariable=string_var)
 label.pack()
 
-entry = ttk.Entry(master=root)
+entry = ttk.Entry(root, textvariable=string_var)
 entry.pack()
 
-button = ttk.Button(master=root, text="Click Me", command=button_func)
+button = ttk.Button(root, text="Click", command=button_func)
 button.pack()
 
-button2 = ttk.Button(master=root, text="Reset", command=button_func_2)
-button2.pack()
-# run
+entry2 = ttk.Entry(master=root, textvariable=string_var_exercise)
+entry2.pack()
+
+entry3 = ttk.Entry(master=root, textvariable=string_var_exercise)
+entry3.pack()
+
+label2 = ttk.Label(master=root, textvariable=string_var_exercise)
+label2.pack()
+
 root.mainloop()
