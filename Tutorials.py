@@ -1,26 +1,37 @@
 import tkinter as tk
 from tkinter import ttk
-#create window
+
+# window
 root = tk.Tk()
-root.title("Tutorial")
-root.geometry("800x500")
+root.title("Getting and setting widgets")
 
-#create widgets
-text = tk.Text(master=root)
-text.pack()
+# functions
+def button_func():
+    entry_text = entry.get()
+    # Update the Label
+    #label.configure(text="some other text")
+    label['text'] = entry_text
+    entry.configure(state='disabled')
 
-#ttk label
-label = ttk.Label(root, text="This is a text")c d
+def button_func_2():
+    # label.configure(text="I am Groot")
+    label['text'] = 'I am Groot'
+    # entry.configure(state='enabled')
+    entry['state'] = 'enabled'
+    entry.delete(0, 'end')
+
+
+# widgets
+label = ttk.Label(master=root, text="I am Groot")
 label.pack()
 
-#ttk entry
 entry = ttk.Entry(master=root)
 entry.pack()
 
-#ttk button
-btn = ttk.Button(master=root, text="Save", command=root.quit)
-btn.pack()
+button = ttk.Button(master=root, text="Click Me", command=button_func)
+button.pack()
 
-
-#Maintain window
+button2 = ttk.Button(master=root, text="Reset", command=button_func_2)
+button2.pack()
+# run
 root.mainloop()
